@@ -33,10 +33,10 @@ export function AuthProvider({ children }) {
     const logout = async () => {
         try {
             await http.post(`api/auth/logout`);
+            await fetch('/api/clear-token', { method: 'POST' }).catch(() => {});
         } catch (e) {
             console.error("Logout error:", e);
         } finally {
-            document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
             setUser(null);
             router.push("/");
         }

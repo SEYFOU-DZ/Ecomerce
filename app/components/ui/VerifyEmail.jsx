@@ -52,8 +52,12 @@ useEffect(()=>{
         const data = await res.json().catch(() => ({}));
         
         if (data?.token) {
-          // Set cookie for Next.js middleware to read cross-domain tokens
-          document.cookie = `token=${data.token}; path=/; max-age=2592000; SameSite=Lax`;
+          // Store token via Next.js API route so middleware.js can read it (same domain)
+          await fetch('/api/set-token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: data.token }),
+          });
         }
 
         const fetchedUser = await refreshUser();
