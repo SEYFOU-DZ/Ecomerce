@@ -49,6 +49,13 @@ useEffect(()=>{
       const res = await http.post(`api/auth/verifyEmail`, { email, otp });
 
       if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        
+        if (data?.token) {
+          // Set cookie for Next.js middleware to read cross-domain tokens
+          document.cookie = `token=${data.token}; path=/; max-age=2592000; SameSite=Lax`;
+        }
+
         const fetchedUser = await refreshUser();
         if (fetchedUser?.isAdmin) {
           router.push('/dashboard');

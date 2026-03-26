@@ -36,6 +36,7 @@ export function AuthProvider({ children }) {
         } catch (e) {
             console.error("Logout error:", e);
         } finally {
+            document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
             setUser(null);
             router.push("/");
         }
