@@ -86,7 +86,7 @@ export default function DashboardOverview() {
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard Overview</h1>
-        <p className="text-gray-500 mt-2">Welcome back. Here's what's happening with your store today.</p>
+        <p className="text-gray-500 mt-2">{"Welcome back. Here's what's happening with your store today."}</p>
       </div>
 
       {/* Stats Grid */}
