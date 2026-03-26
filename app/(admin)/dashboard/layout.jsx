@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import {
   BsHouseDoor,
   BsBoxSeam,
-  BsGear,
   BsBoxArrowRight,
   BsList,
   BsX,
@@ -22,7 +21,6 @@ const navItems = [
   { href: '/dashboard', icon: BsHouseDoor, label: 'Dashboard' },
   { href: '/dashboard/products', icon: BsBoxSeam, label: 'Products' },
   { href: '/dashboard/orders', icon: BsCart3, label: 'Orders' },
-  { href: '/dashboard/settings', icon: BsGear, label: 'Settings' },
 ];
 
 export default function AdminLayout({ children }) {

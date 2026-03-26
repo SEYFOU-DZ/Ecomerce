@@ -6,7 +6,6 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import {
   BsFacebook,
-  BsPersonCircle,
   BsTwitter,
   BsInstagram,
   BsLinkedin,
@@ -170,15 +169,6 @@ export default function Header() {
             {user.firstName} {user.lastName}
           </p>
         </div>
-        <Link
-          href="/profile"
-          className="flex items-center gap-2 px-3 py-2.5 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
-          onClick={() => setDropdownOpen(false)}
-          role="menuitem"
-        >
-          <BsPersonCircle className="text-base text-stone-400 flex-shrink-0" />
-          {t("header.profile")}
-        </Link>
         <button
           type="button"
           onClick={() => {

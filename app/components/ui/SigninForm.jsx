@@ -27,8 +27,10 @@ const SigninForm = () =>{
       setDots("Sign In...");
       const res = await http.post(`api/auth/login`, { email, password });
       if (res.ok) {
+        const data = await res.json().catch(() => ({}));
         const fetchedUser = await refreshUser();
-        if (fetchedUser?.isAdmin) {
+        const isAdmin = Boolean(fetchedUser?.isAdmin ?? data?.user?.isAdmin);
+        if (isAdmin) {
           router.push('/dashboard');
         } else {
           router.push('/');
