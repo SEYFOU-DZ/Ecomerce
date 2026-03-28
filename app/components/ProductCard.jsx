@@ -31,6 +31,7 @@ export default function ProductCard({ product }) {
       {/* Image Container */}
       <div className="relative aspect-[4/5] overflow-hidden bg-slate-50">
         <Link href={`/products/${product._id}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={images[currentImgIndex]}
             alt={product.title}

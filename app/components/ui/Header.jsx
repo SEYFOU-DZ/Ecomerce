@@ -2,7 +2,7 @@
 import "@/app/globals.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import {
   BsFacebook,
@@ -43,7 +43,7 @@ export default function Header() {
 
   useEffect(() => setMounted(true), []);
 
-  const updateMenuPosition = () => {
+  const updateMenuPosition = useCallback(() => {
     const el = avatarBtnRef.current;
     if (!el || typeof window === "undefined") return;
     const r = el.getBoundingClientRect();
@@ -56,7 +56,7 @@ export default function Header() {
       left = Math.min(Math.max(pad, r.right - MENU_W), maxL);
     }
     setMenuPos({ top: r.bottom + 8, left });
-  };
+  }, [isRtl]);
 
   useLayoutEffect(() => {
     if (!dropdownOpen) return;
@@ -67,7 +67,7 @@ export default function Header() {
       window.removeEventListener("resize", updateMenuPosition);
       window.removeEventListener("scroll", updateMenuPosition, true);
     };
-  }, [dropdownOpen, isRtl]);
+  }, [dropdownOpen, updateMenuPosition]);
 
   useEffect(() => {
     if (!dropdownOpen) return;

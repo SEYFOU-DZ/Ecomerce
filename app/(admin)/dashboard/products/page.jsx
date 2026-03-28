@@ -193,6 +193,7 @@ export default function ProductsPage() {
                       <td className="px-5 py-3.5">
                         <div className="w-11 h-11 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 flex-shrink-0">
                           {product.mainImage ? (
+                            /* eslint-disable-next-line @next/next/no-img-element */
                             <img src={product.mainImage} alt={product.title} className="w-full h-full object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-slate-400">
